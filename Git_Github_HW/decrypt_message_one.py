@@ -34,10 +34,23 @@ cipher = {
     '.': '%' 
 }
 
-encrypted_file = open("encrypted_message_one.txt", 'r')
+decipher2 = {}
 
-encrypted_message = encrypted_file.readline()
+for key, item in cipher.items():
+    decipher2[item] = key
 
-encrypted_file.close()
 
 # Write code below
+def decrypt(file):
+    encrypted_file = open(file, 'r')
+
+    encrypted_message = encrypted_file.readline()
+
+    encrypted_file.close()
+    message = ""
+    for letter in encrypted_message:
+        if letter in decipher2.keys():
+            message += decipher2[letter]
+    return message 
+
+print(decrypt("./Git_Github_HW/encrypted_message_one.txt"))
